@@ -41,8 +41,7 @@ def make_list(url: str) -> list:
         print(list_url)
         return list_url
     except Exception as ex:
-        logging.error(
-            f"uncorrect URL\n")
+        logging.error(f"uncorrect URL\n")
 
 
 def download(url: str) -> None:
@@ -55,7 +54,8 @@ def download(url: str) -> None:
 
 
 if __name__ == "__main__":
-    r = make_list(
-        "https://www.bing.com/images/search?q=memes%20about%20wolves&qs=UT&form=QBIR&sp=1&lq=0&pq=memes%20about%20wol&sc=10-15&cvid=076C5499460E484BA562645C9F98C1DA&first=1")
+    # https://www.bing.com/images/search?q=memes%20about%20wolves&qs=UT&form=QBIR&sp=1&lq=0&pq=memes%20about%20wol&sc=10-15&cvid=076C5499460E484BA562645C9F98C1DA&first=1
+    url = input("Введите ссылку на страницу с изображениями")
+    r = make_list(url)
     with ProcessPoolExecutor(max_workers=4) as pool:
         pool.map(download, r)
